@@ -1,0 +1,75 @@
+[tool.poetry]
+name = "my-subproject"
+version = "0.1.0"
+description = "This subproject does nothing exept for helping demonstrate pants issues."
+authors = ["Maarten Derickx"]
+
+[tool.poetry.scripts]
+serve = "my_subproject.main:serve"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pydantic = "^1.8.2"
+pyzmq = "^22.3.0"
+
+[tool.poetry.dev-dependencies]
+pytest = {extras = ["toml"], version = "^6.2.5"}
+pytest-cov = "^2.12.1"
+pytest-mock = "^3.6.1"
+pytest-env = "^0.6.2"
+black = "^21.9b0"
+isort = "^5.9.3"
+pylint = "^2.12.2"
+coverage = {extras = ["toml"], version = "^5.5"}
+mypy = {extras = ["toml"], version = "^0.910"}
+
+[tool.pytest.ini_options]
+addopts = "-v --cov=my_subproject --cov-config=pyproject.toml --cov-report term-missing:skip-covered --cov-report xml --junitxml=report.xml"
+
+[tool.coverage.run]
+branch = true
+source = ["my_subproject"]
+omit = ["tests/*"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 100
+exclude_lines = [
+    "pragma: no cover",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:"
+]
+
+[tool.black]
+line-length = 120
+target-version = ["py310"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_unused_configs = true
+disallow_any_generics = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_return_any = true
+no_implicit_reexport = true
+strict_equality = true
+ignore_missing_imports = true
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+line_length = 120
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

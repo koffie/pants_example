@@ -1,0 +1,17 @@
+# This file is necessary at the top-level of the monorepo,
+# because black looks for it at the common prefix of all the projects.
+# Black essentially ignores any project-specific pyproject.toml files
+
+[tool.black]
+line-length = 120
+target-version = ['py310']
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 100
+exclude_lines = [
+    "pragma: no cover",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:"
+]

@@ -1,0 +1,37 @@
+[GLOBAL]
+pants_version = "2.10.0"
+use_deprecated_python_macros = false
+
+backend_packages = [
+  "pants.backend.python",
+  "pants.backend.python.lint.docformatter",
+  "pants.backend.python.lint.black",
+  "pants.backend.python.lint.flake8",
+  # "pants.backend.python.typecheck.mypy",
+]
+
+build_ignore = [
+]
+
+pants_ignore.add = [
+]
+
+[python]
+interpreter_constraints = ["CPython==3.10.*"]
+
+[setup-py-generation]
+generate_setup_default = false
+
+[source]
+marker_filenames = [
+    "SOURCE_ROOT",
+]
+root_patterns = [
+    '/src/vue',
+]
+
+[anonymous-telemetry]
+enabled = false
+
+[mypy]
+version = "mypy==0.910"
