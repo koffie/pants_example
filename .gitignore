@@ -324,3 +324,5 @@ yarn-error.log
 /.pids
 /.pants.workdir.file_lock*
 /.pants.rc
+/3rdparty/
+

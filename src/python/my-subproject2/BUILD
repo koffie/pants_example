@@ -1,3 +1,5 @@
+python_requirements(resolve="my-subproject2")
+
 python_distribution(
     name="my_subproject2_distribution",
     dependencies=[

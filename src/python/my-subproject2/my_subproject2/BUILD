@@ -1,4 +1,4 @@
-python_sources()
+python_sources(resolve="my-subproject2")
 
 pex_binary(
     name="main",

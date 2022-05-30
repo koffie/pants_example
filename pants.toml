@@ -1,23 +1,30 @@
 [GLOBAL]
-pants_version = "2.10.1"
-use_deprecated_python_macros = false
+pants_version = "2.11.0"
 
 backend_packages = [
-  "pants.backend.python",
-  "pants.backend.python.lint.docformatter",
-  "pants.backend.python.lint.black",
-  "pants.backend.python.lint.flake8",
-  "pants.backend.python.typecheck.mypy",
+    "pants.backend.python",
+    "pants.backend.python.lint.docformatter",
+    "pants.backend.python.lint.black",
+    "pants.backend.python.lint.flake8",
+    "pants.backend.python.typecheck.mypy",
 ]
 
 build_ignore = [
 ]
 
 pants_ignore.add = [
+    "!3rdparty/"
 ]
 
 [python]
 interpreter_constraints = ["CPython==3.10.*"]
+enable_resolves = true
+default_resolve = "my-subproject"
+lockfile_generator = "pex"
+
+[python.resolves]
+my-subproject = "3rdparty/python/my-subproject.txt"
+my-subproject2 = "3rdparty/python/my-subproject2.txt"
 
 [source]
 marker_filenames = [

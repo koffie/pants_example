@@ -1,13 +1,14 @@
-resource(name="pyproject", source="pyproject.toml")
+poetry_requirements(name="poetry",resolve="my-subproject")
 
+resource(name="pyproject", source="pyproject.toml")
 
 python_distribution(
     name="my_subproject_distribution",
     dependencies=[
         ":pyproject",
         "./my_subproject:my_subproject",
-        "//:reqs#pydantic",
-        "//:reqs#pyzmq",
+        ":poetry#pydantic",
+        ":poetry#pyzmq",
     ],
     provides=python_artifact(
         name="my_subproject_distribution",
