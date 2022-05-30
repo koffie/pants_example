@@ -7,7 +7,7 @@ backend_packages = [
   "pants.backend.python.lint.docformatter",
   "pants.backend.python.lint.black",
   "pants.backend.python.lint.flake8",
-  # "pants.backend.python.typecheck.mypy",
+  "pants.backend.python.typecheck.mypy",
 ]
 
 build_ignore = [
@@ -18,9 +18,6 @@ pants_ignore.add = [
 
 [python]
 interpreter_constraints = ["CPython==3.10.*"]
-
-[setup-py-generation]
-generate_setup_default = false
 
 [source]
 marker_filenames = [

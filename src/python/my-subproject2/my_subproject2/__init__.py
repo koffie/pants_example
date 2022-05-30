@@ -1,4 +1,4 @@
-"""my_subproject."""
+"""my_subproject2."""
 
 from importlib.metadata import PackageNotFoundError, version
 

@@ -1,16 +1,11 @@
-resource(name="pyproject", source="pyproject.toml")
-
-
 python_distribution(
-    name="my_subproject_distribution",
+    name="my_subproject2_distribution",
     dependencies=[
-        ":pyproject",
-        "./my_subproject:my_subproject",
-        "//:reqs#pydantic",
-        "//:reqs#pyzmq",
+        "./my_subproject2:my_subproject2",
     ],
     provides=python_artifact(
-        name="my_subproject_distribution",
+        name="my_subproject2_distribution",
+        version="0.2.0",
     ),
     entry_points={
         "console_scripts": {
@@ -18,7 +13,7 @@ python_distribution(
         }
     },
     sdist=False, # needed because of https://github.com/pantsbuild/pants/issues/14983#issuecomment-1086656910
-    generate_setup = False,
+    generate_setup = True,
 )
 
 
@@ -27,8 +22,8 @@ pex_binary(
     # don't know how to add a script, I would like the following to work
     # script="some_helpful_script",
     # entry points work:
-    # entry_point="my_subproject.my_script:main",
-    # entry_point="my_subproject.my_script",
-    entry_point="my_subproject/my_script.py",
-    dependencies=[":my_subproject_distribution"]
+    # entry_point="my_subproject2.my_script:main",
+    # entry_point="my_subproject2.my_script",
+    entry_point="my_subproject2/my_script.py",
+    dependencies=[":my_subproject2_distribution"]
 )
